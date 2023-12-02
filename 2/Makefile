@@ -1,3 +1,4 @@
+all: part1 part2
 
 part1:
 	python3 part1.py input/part1.in
