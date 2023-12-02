@@ -14,8 +14,8 @@ WORD_TO_NUMBER_DICT = {
     'nine': 9
 }
 
-def first_num(line):
-    for i in range(len(line)):
+def find_num(line, start, stop, step):
+    for i in range(start, stop, step):
         if line[i] in NUMS:
             return int(line[i])
 
@@ -23,30 +23,12 @@ def first_num(line):
             if num_word in line[i: i+len(num_word)]:
                 return num
 
-def last_num(line):
-    for i in range(len(line) - 1, -1, -1):
-        if line[i] in NUMS:
-            return int(line[i])
-
-        for num_word, num in WORD_TO_NUMBER_DICT.items():
-            if num_word in line[i:]:
-                return num
-
-def part1(lines):
-    total = 0
-
-    for line in lines:
-        nums = [num for num in line if num in NUMS]
-        total += int(f'{nums[0]}{nums[-1]}')
-
-    return (total)
-
 def part2(lines):
     total = 0
 
     for line in lines:
-        x = first_num(line)
-        y = last_num(line)
+        x = find_num(line, 0, len(line), 1)
+        y = find_num(line, len(line) - 1, -1, -1)
         total += int(f'{x}{y}')
 
     return total
