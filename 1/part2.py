@@ -27,13 +27,12 @@ def part2(lines):
     total = 0
 
     for line in lines:
-        x = find_num(line, 0, len(line), 1)
-        y = find_num(line, len(line) - 1, -1, -1)
-        total += int(f'{x}{y}')
+        first = find_num(line, 0, len(line), 1)
+        last = find_num(line, len(line) - 1, -1, -1)
+        total += int(f'{first}{last}')
 
     return total
 
 lines = [line.strip() for line in open(sys.argv[1]).readlines()]
 print(part2(lines))
-
 
